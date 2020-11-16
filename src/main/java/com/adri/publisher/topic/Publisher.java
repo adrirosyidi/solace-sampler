@@ -8,15 +8,16 @@ public class Publisher {
 
     private static Logger logger = LoggerFactory.getLogger(Publisher.class);
 
-    public void sendMsg(String hostname, String username, String vpn) throws JCSMPException {
+    public void sendMsg(String hostname, String username, String vpn, String password, String topicName) throws JCSMPException {
     final JCSMPProperties properties=new JCSMPProperties();
     properties.setProperty(JCSMPProperties.HOST,hostname);     // host:port
     properties.setProperty(JCSMPProperties.USERNAME,username); // client-username
     properties.setProperty(JCSMPProperties.VPN_NAME,vpn); // message-vpn
+        properties.setProperty(JCSMPProperties.PASSWORD, password); //password
     final JCSMPSession session= JCSMPFactory.onlyInstance().createSession(properties);
     session.connect();
 
-    final Topic topic=JCSMPFactory.onlyInstance().createTopic("tutorial/topic");
+    final Topic topic=JCSMPFactory.onlyInstance().createTopic(topicName);
 
     /** Anonymous inner-class for handling publishing events */
     XMLMessageProducer prod=session.getMessageProducer(new JCSMPStreamingPublishEventHandler(){

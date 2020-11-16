@@ -11,7 +11,7 @@ public class Publisher {
 
     private static Logger logger = LoggerFactory.getLogger(Publisher.class);
 
-    public void sendMsg(String hostname, String username, String vpn, String password) throws JCSMPException {
+    public void sendMsg(String hostname, String username, String vpn, String password, String queueName) throws JCSMPException {
     final JCSMPProperties properties=new JCSMPProperties();
     properties.setProperty(JCSMPProperties.HOST,hostname);     // host:port
     properties.setProperty(JCSMPProperties.USERNAME,username); // client-username
@@ -20,7 +20,7 @@ public class Publisher {
     final JCSMPSession session= JCSMPFactory.onlyInstance().createSession(properties);
     session.connect();
 
-        final Queue queue = JCSMPFactory.onlyInstance().createQueue("pocQueue");
+        final Queue queue = JCSMPFactory.onlyInstance().createQueue(queueName);
 
         /** Anonymous inner-class for handling publishing events */
         final XMLMessageProducer prod = session.getMessageProducer(

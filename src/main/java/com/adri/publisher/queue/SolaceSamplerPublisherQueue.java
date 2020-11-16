@@ -13,6 +13,7 @@ public class SolaceSamplerPublisherQueue extends AbstractJavaSamplerClient {
     private static final String ARG2_TAG = "Username";
     private static final String ARG3_TAG = "VPN";
     private static final String ARG4_TAG = "Password";
+    private static final String ARG5_TAG =  "Queue";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SolaceSamplerPublisherQueue.class);
 
@@ -22,8 +23,9 @@ public class SolaceSamplerPublisherQueue extends AbstractJavaSamplerClient {
         Arguments defaultParameters = new Arguments();
         defaultParameters.addArgument(ARG1_TAG,"hostname");
         defaultParameters.addArgument(ARG2_TAG,"username");
-        defaultParameters.addArgument(ARG3_TAG,"vpn");
         defaultParameters.addArgument(ARG4_TAG, "");
+        defaultParameters.addArgument(ARG3_TAG,"vpn");
+        defaultParameters.addArgument(ARG5_TAG, "queue");
         return defaultParameters;
     }
 
@@ -34,12 +36,13 @@ public class SolaceSamplerPublisherQueue extends AbstractJavaSamplerClient {
         String arg2 = javaSamplerContext.getParameter(ARG2_TAG);
         String arg3 = javaSamplerContext.getParameter(ARG3_TAG);
         String arg4 = javaSamplerContext.getParameter(ARG4_TAG);
+        String arg5 = javaSamplerContext.getParameter(ARG5_TAG);
         Publisher publisher = new Publisher();
         SampleResult sampleResult = new SampleResult();
         sampleResult.sampleStart();
 
         try {
-            publisher.sendMsg(arg1, arg2, arg3, arg4);
+            publisher.sendMsg(arg1, arg2, arg3, arg4, arg5);
             sampleResult.sampleEnd();
             sampleResult.setSuccessful(Boolean.TRUE);
             sampleResult.setResponseCodeOK();

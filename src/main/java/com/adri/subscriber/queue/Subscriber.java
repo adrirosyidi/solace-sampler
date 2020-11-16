@@ -11,14 +11,13 @@ public class Subscriber {
 
     private static Logger logger = LoggerFactory.getLogger(Subscriber.class);
 
-    public void retrieveMsg(String hostname, String username, String vpn, String password) throws JCSMPException {
+    public void retrieveMsg(String hostname, String username, String vpn, String password, String queueName) throws JCSMPException {
         logger.info("TopicSubscriber initializing...");
         final JCSMPProperties properties = new JCSMPProperties();
         properties.setProperty(JCSMPProperties.HOST, hostname);     // host:port
         properties.setProperty(JCSMPProperties.USERNAME, username); // client-username
         properties.setProperty(JCSMPProperties.VPN_NAME,  vpn); // message-vpn
         properties.setProperty(JCSMPProperties.PASSWORD, password); // password
-        final String queueName  = "pocQueue";
         final Queue queue = JCSMPFactory.onlyInstance().createQueue(queueName);
         final JCSMPSession session = JCSMPFactory.onlyInstance().createSession(properties);
 
