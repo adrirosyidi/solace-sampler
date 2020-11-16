@@ -1,19 +1,19 @@
-package com.adri.subscriber;
+package com.adri.publisher.topic;
 
-import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
+import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.samplers.SampleResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SolaceSamplerSubscriber extends AbstractJavaSamplerClient {
+public class SolaceSamplerPublisherTopic extends AbstractJavaSamplerClient {
 
     private static final String ARG1_TAG = "Hostname";
     private static final String ARG2_TAG = "Username";
     private static final String ARG3_TAG = "VPN";
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SolaceSamplerSubscriber.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SolaceSamplerPublisherTopic.class);
 
     @Override
     public Arguments getDefaultParameters() {
@@ -31,12 +31,12 @@ public class SolaceSamplerSubscriber extends AbstractJavaSamplerClient {
         String arg1 = javaSamplerContext.getParameter(ARG1_TAG);
         String arg2 = javaSamplerContext.getParameter(ARG2_TAG);
         String arg3 = javaSamplerContext.getParameter(ARG3_TAG);
-        Subscriber subscriber = new Subscriber();
+        Publisher publisher = new Publisher();
         SampleResult sampleResult = new SampleResult();
         sampleResult.sampleStart();
 
         try {
-            subscriber.retrieveMsg(arg1, arg2, arg3);
+            publisher.sendMsg(arg1, arg2, arg3);
             sampleResult.sampleEnd();
             sampleResult.setSuccessful(Boolean.TRUE);
             sampleResult.setResponseCodeOK();

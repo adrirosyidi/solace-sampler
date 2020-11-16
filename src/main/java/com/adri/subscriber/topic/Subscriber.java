@@ -1,4 +1,4 @@
-package com.adri.subscriber;
+package com.adri.subscriber.topic;
 
 import com.solacesystems.jcsmp.*;
 import org.slf4j.Logger;

@@ -1,4 +1,8 @@
-/Users/macbook/repository/solace-sampler/src/main/java/com/adri/publisher/Publisher.java
-/Users/macbook/repository/solace-sampler/src/main/java/com/adri/publisher/SolaceSamplerPublisher.java
-/Users/macbook/repository/solace-sampler/src/main/java/com/adri/subscriber/Subscriber.java
-/Users/macbook/repository/solace-sampler/src/main/java/com/adri/subscriber/SolaceSamplerSubscriber.java
+/Users/macbook/repository/solace-sampler/src/main/java/com/adri/subscriber/topic/Subscriber.java
+/Users/macbook/repository/solace-sampler/src/main/java/com/adri/publisher/topic/Publisher.java
+/Users/macbook/repository/solace-sampler/src/main/java/com/adri/publisher/queue/Publisher.java
+/Users/macbook/repository/solace-sampler/src/main/java/com/adri/publisher/topic/SolaceSamplerPublisherTopic.java
+/Users/macbook/repository/solace-sampler/src/main/java/com/adri/subscriber/queue/SolaceSamplerSubscriberQueue.java
+/Users/macbook/repository/solace-sampler/src/main/java/com/adri/subscriber/queue/Subscriber.java
+/Users/macbook/repository/solace-sampler/src/main/java/com/adri/publisher/queue/SolaceSamplerPublisherQueue.java
+/Users/macbook/repository/solace-sampler/src/main/java/com/adri/subscriber/topic/SolaceSamplerSubscriberTopic.java
