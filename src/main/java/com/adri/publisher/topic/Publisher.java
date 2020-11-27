@@ -23,7 +23,7 @@ public class Publisher {
     XMLMessageProducer prod=session.getMessageProducer(new JCSMPStreamingPublishEventHandler(){
     @Override
     public void responseReceived(String messageID){
-            logger.info("Producer received response for msg: "+messageID);
+//            logger.info("Producer received response for msg: "+messageID);
             }
     @Override
     public void handleError(String messageID,JCSMPException e,long timestamp){
@@ -35,9 +35,9 @@ public class Publisher {
         TextMessage msg=JCSMPFactory.onlyInstance().createMessage(TextMessage.class);
     final String text="Hello world!";
         msg.setText(text);
-        logger.info("Connected. About to send message "+ text +" to topic " + topic.getName());
+//        logger.info("Connected. About to send message "+ text +" to topic " + topic.getName());
         prod.send(msg,topic);
-        logger.info("Message sent. Exiting.");
+//        logger.info("Message sent. Exiting.");
         session.closeSession();
     }
 }

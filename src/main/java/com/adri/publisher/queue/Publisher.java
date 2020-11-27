@@ -37,11 +37,11 @@ public class Publisher {
                 });
 
         // Publish-only session is now hooked up and running!
-        logger.info("Connected. About to send message to queue '%s'...%n",queue.getName());
+        logger.info("Connected. About to send message to queue " + queue.getName() + "\n");
 
         TextMessage msg = JCSMPFactory.onlyInstance().createMessage(TextMessage.class);
         msg.setDeliveryMode(DeliveryMode.PERSISTENT);
-        String text = "Persistent Queue Tutorial! "+ DateFormat.getDateTimeInstance().format(new Date());
+        String text = "Hello POC ";
         msg.setText(text);
 
         // Send message directly to the queue

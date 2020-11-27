@@ -39,11 +39,11 @@ public class Subscriber {
             @Override
             public void onReceive(BytesXMLMessage msg) {
                 if (msg instanceof TextMessage) {
-                    logger.info("TextMessage received: '%s'%n", ((TextMessage) msg).getText());
+//                    logger.info("TextMessage received: '%s'%n", ((TextMessage) msg).getText());
                 } else {
-                    logger.info("Message received.");
+//                    logger.info("Message received.");
                 }
-                logger.info("Message Dump:%n%s%n", msg.dump());
+//                logger.info("Message Dump:%n%s%n", msg.dump());
 
                 // When the ack mode is set to SUPPORTED_MESSAGE_ACK_CLIENT,
                 // guaranteed delivery messages are acknowledged after
@@ -54,23 +54,23 @@ public class Subscriber {
 
             @Override
             public void onException(JCSMPException e) {
-                logger.info("Consumer received exception: %s%n", e);
+//                logger.info("Consumer received exception: %s%n", e);
                 latch.countDown(); // unblock main thread
             }
         }, flow_prop, endpoint_props);
 
         // Start the consumer
-        logger.info("Connected. Awaiting message ...");
+//        logger.info("Connected. Awaiting message ...");
         cons.start();
 
         try {
             latch.await(5, TimeUnit.SECONDS); // block here until message received, and latch will flip
         } catch (InterruptedException e) {
-            logger.info("I was awoken while waiting");
+//            logger.info("I was awoken while waiting");
         }
         // Close consumer
         cons.close();
-        logger.info("Exiting.");
+//        logger.info("Exiting.");
         session.closeSession();
     }
 }
